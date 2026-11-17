@@ -1,0 +1,110 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  :root {
+    --font-display: 'Cormorant Garamond', Georgia, serif;
+    --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+
+    --bg-canvas: #f5efe5;
+    --bg-surface: #fffdf9;
+    --bg-subtle: #ebe1d2;
+    --border-hairline: #dfd2c0;
+    --text-primary: #292929;
+    --text-secondary: #5c4d42;
+    --text-muted: #7c6c5f;
+    --brand-walnut: #352820;
+    --accent-gold: #b68b54;
+  }
+
+  .dark {
+    --bg-canvas: #18120e;
+    --bg-surface: #231b16;
+    --bg-subtle: #2e241d;
+    --border-hairline: #3e3027;
+    --text-primary: #f5efe5;
+    --text-secondary: #d8cbb8;
+    --text-muted: #a69684;
+    --brand-walnut: #e8dccb;
+    --accent-gold: #c99e67;
+  }
+
+  html {
+    font-family: var(--font-sans);
+    background-color: var(--bg-canvas);
+    color: var(--text-primary);
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    background-color: var(--bg-canvas);
+    color: var(--text-primary);
+    min-height: 100dvh;
+    overflow-x: clip;
+  }
+
+  .font-display {
+    font-family: var(--font-display);
+  }
+
+  .font-mono-tabular {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+/* Custom subtle scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(182, 139, 84, 0.35);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(182, 139, 84, 0.6);
+}
+
+/* StPageFlip realistic book presentation */
+.library-flipbook-stage .stf__parent {
+  margin: 0 auto;
+}
+
+.library-flipbook-stage .stf__wrapper {
+  filter: drop-shadow(0 24px 48px rgba(24, 15, 10, 0.45));
+}
+
+.library-flipbook-stage .stf__item {
+  background-color: #fcfaf5;
+  overflow: hidden;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.library-flipbook-stage .stf__outerShadow,
+.library-flipbook-stage .stf__innerShadow,
+.library-flipbook-stage .stf__hardShadow,
+.library-flipbook-stage .stf__hardInnerShadow {
+  pointer-events: none;
+}
+
+/* Safe area padding helper for mobile bottom nav */
+.pb-safe {
+  padding-bottom: max(0.5rem, env(safe-area-inset-bottom));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
